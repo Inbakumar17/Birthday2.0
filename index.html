@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday 🎉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container" id="mainContainer">
+    <div id="transitionScreen" class="transition hidden">
+        <h1 id="transitionName">Shivanandhini🤍</h1>
+    </div>
+
+    <div id="questionBox" class="box">
+        <h2 id="questionText"></h2>
+        <input id="answerInput" type="text" placeholder="Your answer..." autocomplete="off" />
+        <br>
+        <button class="funBtn" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <div id="videoBox" class="box hidden video-box">
+        <h2 id="videoCaption"></h2>
+        <video id="clip" controls playsinline></video>
+        <br>
+        <button class="funBtn" onclick="continueQuestions()">Continue</button>
+    </div>
+</div>
+
+<div id="finalBox" class="hidden">
+    <h2 id="finalMessage"></h2>
+</div>
+
+<audio id="birthdaySong" loop>
+    <source src="music\Pogathey-MassTamilan.dev.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>

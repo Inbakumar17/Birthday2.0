@@ -1,0 +1,198 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: white;
+    overflow: hidden; /* Keeps the stardust from creating scrollbars */
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+#questionText {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+
+.box {
+    background: transparent;
+    padding: 15px;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 16px;
+    position: relative;
+    z-index: 10;
+    outline: none;
+}
+
+.hidden { display: none !important; }
+
+.video-box video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* --- Name Transition Effects --- */
+.transition h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    letter-spacing: 2px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .transition h1 { font-size: 70px; }
+    .platinum { font-size: 95px !important; }
+}
+
+.silver {
+    background: linear-gradient(90deg, #333 0%, #333 40%, silver 50%, white 55%, silver 60%, #333 70%, #333 100%);
+    background-size: 300%;
+    animation: silverSweep 1.2s ease-in-out infinite alternate;
+}
+@keyframes silverSweep { 0% { background-position: 0%; } 100% { background-position: 100%; } }
+
+.gold {
+    background: linear-gradient(90deg, #442200 0%, #442200 40%, #ffcc00 50%, #ffd700 55%, #ffcc00 60%, #442200 70%, #442200 100%);
+    background-size: 300%;
+    animation: goldSweep 1.2s ease-in-out infinite alternate;
+}
+@keyframes goldSweep { 0% { background-position: 100%; } 100% { background-position: 0%; } }
+
+.platinum {
+    font-size: 65px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(230,230,230,0.7) 35%, white 50%, rgba(230,230,230,0.7) 65%, rgba(255,255,255,0.1) 100%);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: platinumSoft 2.2s ease-in-out infinite;
+    text-shadow: 0 0 15px rgba(255,255,255,0.6), 0 0 45px rgba(255,255,255,0.4);
+}
+@keyframes platinumSoft { 0% { background-position: 0%; } 100% { background-position: 300%; } }
+
+/* --- Button --- */
+.funBtn {
+    padding: 14px 35px;
+    border-radius: 50px;
+    background: #7be3ff;
+    color: #003b5c;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: float 2s infinite ease-in-out;
+    margin-top: 20px;
+}
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+
+/* --- Final Credits Section --- */
+#finalBox {
+    mask-image: linear-gradient(to top, transparent, black 15%, black 85%, transparent);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 100; /* Ensures it is on top */
+}
+
+#finalMessage {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ffffff;
+    text-align: center;
+    width: 85%;
+    max-width: 800px;
+    margin: auto;
+    text-shadow: 0 0 6px rgba(255,255,255,0.35);
+    white-space: pre-wrap;
+    position: relative;
+    transform: translateY(100vh);
+}
+
+.start-credit-roll {
+    animation: creditRoll 750s linear forwards;
+}
+
+.start-credit-roll.paused {
+    animation-play-state: paused !important;
+    -webkit-animation-play-state: paused !important; /* For Safari/iPhones */
+}
+@keyframes creditRoll {
+    from { transform: translateY(100vh); }
+    /* Changed from -160% to -350% so the long text fully clears the screen */
+    to { transform: translateY(-350%); }
+}
+
+#finalBox:not(.hidden)::before {
+    content: "Shivanandhini Inbakumar";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(230,230,230,0.9), white, rgba(230,230,230,0.9), rgba(255,255,255,0.1));
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: platinumSoft 2.5s ease-in-out infinite, watermarkGlow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 15px rgba(240, 240, 240, 0.6);
+    white-space: nowrap;
+    z-index: -1;
+    opacity: 0.3; /* Subtle background watermark */
+}
+
+@media (min-width: 768px) {
+    #finalBox:not(.hidden)::before { font-size: 70px; }
+    #finalMessage { font-size: 22px; }
+}
+
+@keyframes watermarkGlow { from { opacity: 0.2; } to { opacity: 0.4; } }
+
+.paused {
+    animation-play-state: paused !important;
+}
+
+body.galaxy-mode {
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1), rgba(0,0,0,0.9)), linear-gradient(135deg, #000428, #004e92);
+    background-size: 200% 200%;
+    animation: galaxyMove 8s ease-in-out infinite alternate;
+}
+@keyframes galaxyMove { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+
+body.galaxy-mode::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: .5;
+    pointer-events: none;
+    z-index: 1;
+}
